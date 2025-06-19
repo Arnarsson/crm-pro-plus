@@ -85,6 +85,7 @@ export default function DashboardPage() {
     recentDeals: [],
   })
   const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
     loadDashboardData()
@@ -92,6 +93,10 @@ export default function DashboardPage() {
 
   const loadDashboardData = async () => {
     setLoading(true)
+
+    // Get user first
+    const { data: { user } } = await supabase.auth.getUser()
+    setUser(user)
 
     const [contactsResult, dealsResult] = await Promise.all([
       supabase
@@ -158,6 +163,14 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-slate-50 mb-2">
+          🎯 Good afternoon, {(user?.email || 'User').split('@')[0]}!
+        </h1>
+        <p className="text-slate-400">Ready to crush your goals? Here's your Q1 2025 progress.</p>
+      </div>
+
       {/* Main Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard

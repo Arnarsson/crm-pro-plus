@@ -1,0 +1,161 @@
+#!/bin/bash
+
+echo "🏥 CRM Pro Plus - Emergency Dashboard Recovery"
+echo "=============================================="
+echo ""
+
+cd /Users/sven/Desktop/MCP/CUSTOM_CRM/crm-pro-plus
+
+# Stop everything
+pkill -f "next" || true
+lsof -ti:3001 | xargs kill -9 2>/dev/null || true
+
+# Create a standalone dashboard HTML file that works immediately
+echo "📌 Creating standalone dashboard preview..."
+cat > dashboard-preview.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Pro Plus - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #0f172a; }
+        .card { background: #1e293b; }
+        .metric-card { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
+    </style>
+</head>
+<body class="text-white">
+    <div class="min-h-screen p-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-slate-50 mb-2">
+                🎯 Good afternoon, Sven!
+            </h1>
+            <p class="text-slate-400">Ready to crush your goals? Here's your Q1 2025 progress.</p>
+        </div>
+
+        <!-- Main Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="metric-card p-6 rounded-xl border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-2xl">💰</span>
+                    <span class="text-emerald-400 text-sm">+12%</span>
+                </div>
+                <h3 class="text-slate-400 text-sm mb-1">Revenue This Month</h3>
+                <p class="text-2xl font-bold">17,000 DKK</p>
+                <div class="mt-4 bg-slate-700 rounded-full h-2">
+                    <div class="bg-emerald-500 h-2 rounded-full" style="width: 45%"></div>
+                </div>
+            </div>
+
+            <div class="metric-card p-6 rounded-xl border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-2xl">🎯</span>
+                </div>
+                <h3 class="text-slate-400 text-sm mb-1">OKR Progress</h3>
+                <p class="text-2xl font-bold">65%</p>
+                <div class="mt-4 bg-slate-700 rounded-full h-2">
+                    <div class="bg-indigo-500 h-2 rounded-full" style="width: 65%"></div>
+                </div>
+            </div>
+
+            <div class="metric-card p-6 rounded-xl border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-2xl">👥</span>
+                    <span class="text-indigo-400 text-sm">+100 today</span>
+                </div>
+                <h3 class="text-slate-400 text-sm mb-1">Total Contacts</h3>
+                <p class="text-2xl font-bold">1,923</p>
+            </div>
+
+            <div class="metric-card p-6 rounded-xl border border-slate-700">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-2xl">💼</span>
+                </div>
+                <h3 class="text-slate-400 text-sm mb-1">Active Deals</h3>
+                <p class="text-2xl font-bold">12</p>
+                <p class="text-sm text-amber-400 mt-2">320,000 DKK pipeline</p>
+            </div>
+        </div>
+
+        <!-- Today's Focus & OKRs -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Today's Focus -->
+            <div class="card p-6 rounded-xl border border-slate-700">
+                <h3 class="text-lg font-semibold mb-4 flex items-center">
+                    📅 Today's Focus
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-700/50">
+                        <input type="checkbox" checked class="h-4 w-4">
+                        <span class="line-through text-slate-400">Call Christopher DTU</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-700/50">
+                        <input type="checkbox" class="h-4 w-4">
+                        <span>LinkedIn post about AI</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-700/50">
+                        <input type="checkbox" class="h-4 w-4">
+                        <span>Review proposals</span>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-slate-700/30 rounded-lg">
+                    <div class="flex justify-between text-sm text-slate-400 mb-2">
+                        <span>Daily Progress</span>
+                        <span>1/3 tasks</span>
+                    </div>
+                    <div class="bg-slate-700 rounded-full h-2">
+                        <div class="bg-emerald-500 h-2 rounded-full" style="width: 33%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OKRs -->
+            <div class="lg:col-span-2 card p-6 rounded-xl border border-slate-700">
+                <h3 class="text-lg font-semibold mb-4">🎯 Q1 2025 Objectives</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-medium">Secure Revenue Foundation</h4>
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm text-slate-400">80%</span>
+                                <div class="w-20 bg-slate-700 rounded-full h-2">
+                                    <div class="bg-indigo-500 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-sm">
+                            <div class="flex items-center gap-2 p-2 rounded bg-slate-700/30">
+                                <span class="text-emerald-400">✓</span>
+                                <span>11 teaching days</span>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 rounded bg-slate-700/30">
+                                <span class="text-slate-400">○</span>
+                                <span class="text-slate-400">Parental benefits</span>
+                            </div>
+                            <div class="flex items-center gap-2 p-2 rounded bg-slate-700/30">
+                                <span class="text-slate-400">○</span>
+                                <span class="text-slate-400">Land SVC client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+EOF
+
+echo "✅ Dashboard preview created!"
+echo ""
+echo "📌 Option 1: View the dashboard preview now:"
+echo "open dashboard-preview.html"
+echo ""
+echo "📌 Option 2: Fix and run the actual app:"
+echo "chmod +x fix-webpack-error.sh"
+echo "./fix-webpack-error.sh"
+echo ""
+echo "The preview shows what your dashboard SHOULD look like!"
