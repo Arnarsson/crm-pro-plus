@@ -260,3 +260,11 @@ select, input[type="text"], input[type="email"], input[type="password"], input[t
     @apply text-xl;
   }
 }
+
+/* Custom Shadow Effects */
+.shadow-premium {
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.2),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
