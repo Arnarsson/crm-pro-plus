@@ -1,272 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-:root {
-  /* Premium Dark Mode Color Palette */
-  --primary: #6366F1;      /* Indigo - Trust & Innovation */
-  --secondary: #10B981;    /* Emerald - Success & Growth */
-  --accent: #F59E0B;       /* Amber - Attention & Priority */
-  --danger: #EF4444;       /* Red - Alerts & Warnings */
-  --warning: #F97316;      /* Orange - Warnings */
-  
-  /* Dark Theme Backgrounds */
-  --bg-primary: #0F172A;    /* Slate 900 - Main background */
-  --bg-secondary: #1E293B;  /* Slate 800 - Cards */
-  --bg-tertiary: #334155;   /* Slate 700 - Elevated */
-  --bg-hover: #475569;      /* Slate 600 - Hover states */
-  
-  /* Text Colors */
-  --text-primary: #F8FAFC;  /* Slate 50 - Headers */
-  --text-secondary: #CBD5E1; /* Slate 300 - Body */
-  --text-muted: #64748B;    /* Slate 500 - Muted */
-  --text-inverse: #0F172A;  /* Dark text on light backgrounds */
-  
-  /* Border Colors */
-  --border-primary: #334155; /* Slate 700 */
-  --border-secondary: #475569; /* Slate 600 */
-  
-  /* Glass Effects */
-  --glass-bg: rgba(30, 41, 59, 0.8);
-  --glass-border: rgba(148, 163, 184, 0.2);
-}
-
-@theme inline {
-  --color-background: var(--bg-primary);
-  --color-foreground: var(--text-primary);
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
-}
-
-/* Base Styles */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border-primary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--border-secondary);
-}
-
-/* Custom Utilities */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.shadow-premium {
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.4),
-    0 2px 4px -1px rgba(0, 0, 0, 0.3);
-}
-
-.shadow-premium-lg {
-  box-shadow: 
-    0 10px 15px -3px rgba(0, 0, 0, 0.4),
-    0 4px 6px -2px rgba(0, 0, 0, 0.3);
-}
-
-/* Animation Classes */
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.3s ease-out;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { 
-    opacity: 0;
-    transform: translateY(20px);
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
   }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
-@keyframes scaleIn {
-  from { 
-    opacity: 0;
-    transform: scale(0.95);
+@layer base {
+  * {
+    @apply border-border;
   }
-  to { 
-    opacity: 1;
-    transform: scale(1);
+  body {
+    @apply bg-background text-foreground;
   }
-}
-
-/* Focus States */
-.focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900;
-}
-
-/* Button Variants */
-.btn-primary {
-  @apply bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500;
-}
-
-.btn-secondary {
-  @apply bg-slate-700 text-slate-200 hover:bg-slate-600 focus:ring-slate-500;
-}
-
-.btn-success {
-  @apply bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500;
-}
-
-.btn-danger {
-  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
-}
-
-/* Card Styles */
-.card {
-  @apply bg-slate-800 border border-slate-700 rounded-lg p-6 shadow-premium;
-}
-
-.card-hover {
-  @apply hover:bg-slate-700 hover:shadow-premium-lg transition-all duration-200;
-}
-
-/* Input Styles */
-.input-primary {
-  @apply bg-slate-800 border-slate-600 text-slate-200 placeholder-slate-400 focus:border-indigo-500 focus:ring-indigo-500;
-}
-
-/* Status Colors */
-.status-success { color: var(--secondary); }
-.status-warning { color: var(--accent); }
-.status-danger { color: var(--danger); }
-.status-info { color: var(--primary); }
-
-/* Custom Select and Form Elements */
-select, input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea {
-  @apply input-primary;
-}
-
-/* Progress Bar */
-.progress-bar {
-  @apply w-full bg-slate-700 rounded-full h-2;
-}
-
-.progress-fill {
-  @apply h-2 rounded-full transition-all duration-300;
-}
-
-.progress-primary .progress-fill {
-  @apply bg-indigo-600;
-}
-
-.progress-success .progress-fill {
-  @apply bg-emerald-600;
-}
-
-.progress-warning .progress-fill {
-  @apply bg-amber-600;
-}
-
-/* Metric Cards */
-.metric-card {
-  @apply card card-hover;
-}
-
-.metric-value {
-  @apply text-2xl font-bold text-slate-50;
-}
-
-.metric-label {
-  @apply text-sm text-slate-400;
-}
-
-.metric-change {
-  @apply text-sm font-medium;
-}
-
-.metric-change.positive {
-  @apply text-emerald-400;
-}
-
-.metric-change.negative {
-  @apply text-red-400;
-}
-
-/* Navigation */
-.nav-item {
-  @apply flex items-center px-4 py-2 text-slate-300 hover:text-slate-50 hover:bg-slate-700 rounded-lg transition-colors duration-200;
-}
-
-.nav-item.active {
-  @apply text-indigo-400 bg-slate-700;
-}
-
-/* Loading States */
-.skeleton {
-  @apply animate-pulse bg-slate-700 rounded;
-}
-
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  .card {
-    @apply p-4;
-  }
-  
-  .metric-value {
-    @apply text-xl;
-  }
-}
-
-/* Custom Shadow Effects */
-.shadow-premium {
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.2),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }

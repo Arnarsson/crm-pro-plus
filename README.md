@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CRM Pro Plus
+
+A modern Customer Relationship Management (CRM) system built with Next.js 14, TypeScript, and Supabase.
+
+## Features
+
+- 📊 **Revenue Tracking**: Visual charts showing monthly revenue trends
+- 💰 **Expense Management**: Track and categorize business expenses
+- 👥 **Client Management**: Manage client information and relationships
+- ✅ **Task Tracking**: Keep track of pending tasks and projects
+- 📈 **Financial Analytics**: Real-time profit calculations and margin analysis
+- 🎨 **Modern UI**: Built with Tailwind CSS and shadcn/ui components
+
+## Tech Stack
+
+- **Frontend**: Next.js 14 (App Router), TypeScript, React 18
+- **Database**: Supabase (PostgreSQL)
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Charts**: Recharts
+- **Icons**: Lucide React
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ and npm
+- A Supabase account and project
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Arnarsson/crm-pro-plus.git
+cd crm-pro-plus
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.local.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit `.env.local` with your Supabase credentials:
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-## Learn More
+4. Set up the database:
 
-To learn more about Next.js, take a look at the following resources:
+Run the SQL script in `database/schema.sql` in your Supabase SQL editor to create all necessary tables.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Run the development server:
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) to see the application.
 
-## Deploy on Vercel
+## Database Schema
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application uses the following tables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **revenue_entries**: Monthly revenue tracking
+- **expenses**: Business expense records
+- **clients**: Client information
+- **invoices**: Invoice management
+- **tasks**: Task and project tracking
+
+## Project Structure
+
+```
+crm-pro-plus/
+├── app/
+│   ├── components/      # React components
+│   ├── lib/            # Utilities and configurations
+│   ├── globals.css     # Global styles
+│   └── page.tsx        # Main dashboard page
+├── database/           # SQL schemas
+├── public/             # Static assets
+└── package.json        # Dependencies
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support, please open an issue in the GitHub repository.
