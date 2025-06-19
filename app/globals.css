@@ -4,32 +4,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Premium Dark Mode Color Palette */
+  /* EUREKA Premium Color Palette */
   --primary: #6366F1;      /* Indigo - Trust & Innovation */
   --secondary: #10B981;    /* Emerald - Success & Growth */
   --accent: #F59E0B;       /* Amber - Attention & Priority */
   --danger: #EF4444;       /* Red - Alerts & Warnings */
   --warning: #F97316;      /* Orange - Warnings */
+  --purple: #A855F7;       /* Purple - AI & Magic */
+  --pink: #EC4899;         /* Pink - Highlights */
+  --cyan: #06B6D4;         /* Cyan - Connections */
   
-  /* Dark Theme Backgrounds */
-  --bg-primary: #0F172A;    /* Slate 900 - Main background */
-  --bg-secondary: #1E293B;  /* Slate 800 - Cards */
-  --bg-tertiary: #334155;   /* Slate 700 - Elevated */
-  --bg-hover: #475569;      /* Slate 600 - Hover states */
+  /* EUREKA Dark Theme */
+  --bg-primary: #0A0E1A;    /* Deep space black */
+  --bg-secondary: #151823;  /* Dark nebula */
+  --bg-tertiary: #1F2436;   /* Elevated surfaces */
+  --bg-hover: #2A3045;      /* Hover states */
   
   /* Text Colors */
-  --text-primary: #F8FAFC;  /* Slate 50 - Headers */
-  --text-secondary: #CBD5E1; /* Slate 300 - Body */
-  --text-muted: #64748B;    /* Slate 500 - Muted */
-  --text-inverse: #0F172A;  /* Dark text on light backgrounds */
+  --text-primary: #F8FAFC;  /* Pure white headers */
+  --text-secondary: #CBD5E1; /* Soft body text */
+  --text-muted: #64748B;    /* Muted elements */
+  --text-inverse: #0F172A;  /* Dark on light */
   
   /* Border Colors */
-  --border-primary: #334155; /* Slate 700 */
-  --border-secondary: #475569; /* Slate 600 */
+  --border-primary: rgba(99, 102, 241, 0.2); /* Glowing borders */
+  --border-secondary: rgba(168, 85, 247, 0.2); /* Purple glow */
   
-  /* Glass Effects */
-  --glass-bg: rgba(30, 41, 59, 0.8);
-  --glass-border: rgba(148, 163, 184, 0.2);
+  /* EUREKA Glass Effects */
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(99, 102, 241, 0.2);
+  --glass-blur: 20px;
+  
+  /* Premium Gradients */
+  --aurora-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+  --neon-gradient: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff);
+  --holographic: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  
+  /* Glow Effects */
+  --neon-glow: 0 0 20px rgba(99, 102, 241, 0.5);
+  --purple-glow: 0 0 30px rgba(168, 85, 247, 0.6);
+  --success-glow: 0 0 20px rgba(16, 185, 129, 0.5);
 }
 
 @theme inline {
@@ -79,11 +93,84 @@ body {
   background: var(--border-secondary);
 }
 
-/* Custom Utilities */
+/* EUREKA Glass Morphism Utilities */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   border: 1px solid var(--glass-border);
+  box-shadow: 
+    0 8px 32px rgba(99, 102, 241, 0.1),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.glass-premium {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(99, 102, 241, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.glass-holographic {
+  background: linear-gradient(135deg, 
+    rgba(99, 102, 241, 0.1),
+    rgba(168, 85, 247, 0.05),
+    rgba(236, 72, 153, 0.05)
+  );
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-holographic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: holographic-sweep 3s ease-in-out infinite;
+}
+
+@keyframes holographic-sweep {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+  box-shadow: var(--neon-glow);
+}
+
+.neon-glow-purple {
+  box-shadow: var(--purple-glow);
+}
+
+.neon-glow-success {
+  box-shadow: var(--success-glow);
+}
+
+/* EUREKA Card Styles */
+.eureka-card {
+  @apply glass-premium rounded-xl p-6 transition-all duration-300;
+}
+
+.eureka-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(99, 102, 241, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 .text-gradient {
@@ -269,4 +356,126 @@ select, input[type="text"], input[type="email"], input[type="password"], input[t
     0 20px 25px -5px rgba(0, 0, 0, 0.2),
     0 10px 10px -5px rgba(0, 0, 0, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* EUREKA Premium Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes rotate-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: rotate-gradient 4s ease infinite;
+}
+
+/* EUREKA Text Effects */
+.text-aurora {
+  background: var(--aurora-gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rotate-gradient 4s ease infinite;
+}
+
+.text-neon {
+  color: var(--primary);
+  text-shadow: 
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+/* EUREKA Button Styles */
+.btn-eureka {
+  @apply relative px-6 py-3 font-medium text-white rounded-lg overflow-hidden transition-all duration-300;
+  background: linear-gradient(135deg, var(--primary), var(--purple));
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-eureka:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-eureka::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-eureka:hover::before {
+  left: 100%;
+}
+
+/* EUREKA Particle Background */
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* EUREKA Loading Animation */
+.eureka-loader {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.eureka-loader::before,
+.eureka-loader::after {
+  content: '';
+  position: absolute;
+  border: 3px solid transparent;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: eureka-spin 1s ease-in-out infinite;
+}
+
+.eureka-loader::before {
+  width: 100%;
+  height: 100%;
+}
+
+.eureka-loader::after {
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  animation-delay: 0.2s;
+  border-top-color: var(--purple);
+}
+
+@keyframes eureka-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

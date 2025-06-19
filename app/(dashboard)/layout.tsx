@@ -20,12 +20,18 @@ import {
   Settings,
   Search,
   Plus,
-  User
+  User,
+  Sparkles,
+  Linkedin,
+  Network
 } from 'lucide-react'
+import { EurekaChat } from '@/components/ai/EurekaChat'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: Home, emoji: '🏠' },
   { name: 'Contacts', href: '/contacts', icon: Users, emoji: '👥' },
+  { name: 'LinkedIn Import', href: '/import/linkedin', icon: Linkedin, emoji: '🔗' },
+  { name: 'Network Map', href: '/relationships/network', icon: Network, emoji: '🕸️' },
   { name: 'Deals', href: '/deals', icon: TrendingUp, emoji: '💼' },
   { name: 'OKRs', href: '/okrs', icon: Target, emoji: '🎯' },
   { name: 'Planning', href: '/planning', icon: CalendarDays, emoji: '📅' },
@@ -121,7 +127,15 @@ export default function DashboardLayout({
           
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             <div className="flex-shrink-0 flex items-center px-6 mb-8">
-              <h1 className="text-xl font-bold text-gradient">CRM Pro+</h1>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold text-aurora">EUREKA</h1>
+                  <p className="text-xs text-gray-500">AI Business Assistant</p>
+                </div>
+              </div>
             </div>
             
             <nav className="mt-5 px-3 space-y-1">
@@ -165,7 +179,15 @@ export default function DashboardLayout({
         <div className="flex-1 flex flex-col min-h-0 bg-slate-800 border-r border-slate-700">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-6 mb-8">
-              <h1 className="text-xl font-bold text-gradient">CRM Pro+</h1>
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold text-aurora">EUREKA</h1>
+                  <p className="text-xs text-gray-500">AI Business Assistant</p>
+                </div>
+              </div>
             </div>
             
             <nav className="mt-5 flex-1 px-3 space-y-1">
@@ -258,6 +280,9 @@ export default function DashboardLayout({
           </motion.div>
         </main>
       </div>
+      
+      {/* EUREKA AI Assistant */}
+      <EurekaChat />
     </div>
   )
 }
