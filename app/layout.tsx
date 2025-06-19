@@ -1,28 +1,21 @@
-import type { Metadata } from "next";
-import { GeistSans, GeistMono } from "geist/font";
-import "./globals.css";
-import "./working-styles.css";
+import './globals.css'
+import { Inter } from 'next/font/google'
 
-const geistSans = GeistSans;
-const geistMono = GeistMono;
+const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: "CRM Speed - Lightning Fast CRM",
-  description: "Professional CRM built with Next.js, Supabase, and AI",
-};
+export const metadata = {
+  title: 'EUREKA CRM',
+  description: 'Next-generation CRM with AI-powered insights',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className="h-full bg-gray-900">
+      <body className={`${inter.className} h-full`}>{children}</body>
     </html>
-  );
+  )
 }

@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  transpilePackages: ['three'],
   // Disable type checking during build to bypass errors
   typescript: {
     ignoreBuildErrors: true,

@@ -8,8 +8,12 @@ import { ContactModal } from '@/components/ContactModal'
 import { ImportContacts } from '@/components/ImportContacts'
 import { LinkedInImport } from '@/components/LinkedInImport'
 import { BulkActions } from '@/components/BulkActions'
+import { useRouter } from 'next/navigation'
 
 export default function ContactsPage() {
+  const router = useRouter();
+  const [authLoading, setAuthLoading] = useState(true);
+  const [user, setUser] = useState(null);
   const [contacts, setContacts] = useState<Contact[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
@@ -19,6 +23,19 @@ export default function ContactsPage() {
   const [isLinkedInImportOpen, setIsLinkedInImportOpen] = useState(false)
   const [showImportDropdown, setShowImportDropdown] = useState(false)
   const [selectedContacts, setSelectedContacts] = useState<string[]>([])
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        router.push('/auth/login');
+      } else {
+        setUser(user);
+      }
+      setAuthLoading(false);
+    };
+    checkAuth();
+  }, [router]);
 
   useEffect(() => {
     loadContacts()
@@ -108,6 +125,15 @@ export default function ContactsPage() {
       contact.position?.toLowerCase().includes(searchLower)
     )
   })
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      </div>
+    );
+  }
+  if (!user) return null;
 
   return (
     <div className="py-6">

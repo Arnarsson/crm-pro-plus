@@ -54,7 +54,8 @@ test.describe('Detailed Debug', () => {
     console.log('📍 After signup URL:', signupUrl);
     
     // Check for any error messages
-    const signupError = await page.locator('[class*="red"], [class*="error"], .text-red-600').textContent();
+    const signupErrorLocator = page.locator('.text-red-600, [role="alert"], .error-message');
+    const signupError = await signupErrorLocator.first().isVisible() ? await signupErrorLocator.first().textContent() : '';
     if (signupError) {
       console.log('🔴 Signup error visible:', signupError);
     }
@@ -75,7 +76,8 @@ test.describe('Detailed Debug', () => {
     const loginUrl = page.url();
     console.log('📍 After login URL:', loginUrl);
     
-    const loginError = await page.locator('[class*="red"], [class*="error"], .text-red-600').textContent();
+    const loginErrorLocator = page.locator('.text-red-600, [role="alert"], .error-message');
+    const loginError = await loginErrorLocator.first().isVisible() ? await loginErrorLocator.first().textContent() : '';
     if (loginError) {
       console.log('🔴 Login error visible:', loginError);
     }

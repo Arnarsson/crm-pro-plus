@@ -1,0 +1,11 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Port Management Rule
+
+- Always close all open ports before starting the dev server or any process that binds to a port.
+- Always use the default port 3000 for local development unless explicitly instructed otherwise.
+- If port 3000 is in use, prompt the user to close the process or free the port, rather than auto-incrementing to 3001, 3002, etc.
+- This ensures predictable local URLs and avoids confusion with multiple running instances.

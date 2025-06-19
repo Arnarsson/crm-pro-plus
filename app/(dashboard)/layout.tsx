@@ -35,6 +35,7 @@ const navigation = [
   { name: 'Deals', href: '/deals', icon: TrendingUp, emoji: '💼' },
   { name: 'OKRs', href: '/okrs', icon: Target, emoji: '🎯' },
   { name: 'Planning', href: '/planning', icon: CalendarDays, emoji: '📅' },
+  { name: 'Tasks', href: '/tasks', icon: Sparkles, emoji: '🪐' },
   { name: 'Revenue', href: '/revenue', icon: DollarSign, emoji: '💰' },
   { name: 'Analytics', href: '/analytics', icon: BarChart3, emoji: '📊' },
   { name: 'Settings', href: '/settings', icon: Settings, emoji: '⚙️' },
