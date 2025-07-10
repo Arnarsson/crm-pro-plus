@@ -26,7 +26,24 @@ A modern Customer Relationship Management (CRM) system built with Next.js 14, Ty
 - Node.js 18+ and npm
 - A Supabase account and project
 
-### Installation
+### Quick Start (Recommended)
+
+For the fastest setup, use the master fix script:
+
+```bash
+git clone https://github.com/Arnarsson/crm-pro-plus.git
+cd crm-pro-plus
+chmod +x MASTER_FIX.sh
+./MASTER_FIX.sh
+```
+
+This will automatically:
+- Set up environment variables
+- Install dependencies
+- Fix common configuration issues
+- Create health check endpoints
+
+### Manual Installation
 
 1. Clone the repository:
 ```bash
@@ -61,6 +78,45 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
 
+## Troubleshooting
+
+### Common Issues
+
+#### 1. "Invalid URL" Error
+This means your Supabase environment variables are not set correctly.
+
+**Solution**: Run the master fix script:
+```bash
+chmod +x MASTER_FIX.sh
+./MASTER_FIX.sh
+```
+
+#### 2. Port Already in Use
+If port 3000 is already taken:
+```bash
+npm run dev -- --port 3001
+```
+
+#### 3. Module Not Found Errors
+Clear caches and reinstall dependencies:
+```bash
+rm -rf .next node_modules package-lock.json
+npm install --legacy-peer-deps
+npm run dev
+```
+
+#### 4. Database Connection Issues
+1. Check your Supabase credentials in `.env.local`
+2. Ensure the database tables are created (run `database/schema.sql`)
+3. Test the connection: http://localhost:3000/api/health
+
+### Available Fix Scripts
+
+- `MASTER_FIX.sh` - Comprehensive fix for all common issues
+- `FIX_COMPLETE.sh` - Complete environment setup
+- `QUICK_FIX.sh` - Quick dependency fixes
+- `fix-env-issue.sh` - Environment variable fixes
+
 ## Database Schema
 
 The application uses the following tables:
@@ -76,14 +132,26 @@ The application uses the following tables:
 ```
 crm-pro-plus/
 ├── app/
-│   ├── components/      # React components
+│   ├── (dashboard)/     # Dashboard routes
+│   ├── api/            # API routes
+│   ├── auth/           # Authentication
+│   ├── components/     # React components
 │   ├── lib/            # Utilities and configurations
 │   ├── globals.css     # Global styles
-│   └── page.tsx        # Main dashboard page
+│   └── page.tsx        # Main page
 ├── database/           # SQL schemas
 ├── public/             # Static assets
-└── package.json        # Dependencies
+├── components/         # Shared components
+├── lib/               # Shared utilities
+└── package.json       # Dependencies
 ```
+
+## Health Check
+
+Once running, verify your setup:
+- Main app: http://localhost:3000
+- Health check: http://localhost:3000/api/health
+- Test page: http://localhost:3000/test
 
 ## Contributing
 
@@ -96,3 +164,22 @@ This project is licensed under the MIT License.
 ## Support
 
 For support, please open an issue in the GitHub repository.
+
+## Quick Commands
+
+```bash
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run production server
+npm start
+
+# Run linting
+npm run lint
+
+# Run master fix (if issues arise)
+./MASTER_FIX.sh
+```
